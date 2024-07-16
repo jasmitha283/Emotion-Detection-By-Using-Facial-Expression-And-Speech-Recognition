@@ -9,60 +9,7 @@ from keras.models import Sequential
 from keras.models import model_from_json
 import pickle
 
-# Non-Binary Image Classification using Convolution Neural Networks
-'''
-path = 'Dataset'
 
-labels = []
-X_train = []
-Y_train = []
-
-def getID(name):
-    index = 0
-    for i in range(len(labels)):
-        if labels[i] == name:
-            index = i
-            break
-    return index        
-    
-
-for root, dirs, directory in os.walk(path):
-    for j in range(len(directory)):
-        name = os.path.basename(root)
-        if name not in labels:
-            labels.append(name)
-print(labels)
-
-for root, dirs, directory in os.walk(path):
-    for j in range(len(directory)):
-        name = os.path.basename(root)
-        print(name+" "+root+"/"+directory[j])
-        if 'Thumbs.db' not in directory[j]:
-            img = cv2.imread(root+"/"+directory[j])
-            img = cv2.resize(img, (32,32))
-            im2arr = np.array(img)
-            im2arr = im2arr.reshape(32,32,3)
-            X_train.append(im2arr)
-            Y_train.append(getID(name))
-        
-X_train = np.asarray(X_train)
-Y_train = np.asarray(Y_train)
-print(Y_train)
-
-X_train = X_train.astype('float32')
-X_train = X_train/255
-    
-test = X_train[3]
-cv2.imshow("aa",test)
-cv2.waitKey(0)
-indices = np.arange(X_train.shape[0])
-np.random.shuffle(indices)
-X_train = X_train[indices]
-Y_train = Y_train[indices]
-Y_train = to_categorical(Y_train)
-np.save('model/X.txt',X_train)
-np.save('model/Y.txt',Y_train)
-'''
 X_train = np.load('model/X.txt.npy')
 Y_train = np.load('model/Y.txt.npy')
 print(X_train.shape)
